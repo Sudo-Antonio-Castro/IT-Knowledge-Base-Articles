@@ -472,16 +472,16 @@
       <article class="panel">
         <section class="hero">
           <div class="title">
-            <h2 id="article-title">[KB] Title goes here</h2>
+            <h2 id="article-title">[KB] Wifite </h2>
             <div class="meta">
               <span class="chip"><b>Audience:</b> Help Desk / IT Admin</span>
-              <span class="chip"><b>System:</b> Windows / Browser</span>
+              <span class="chip"><b>System:</b> Linux / Browser</span>
               <span class="chip"><b>Last reviewed:</b> 2025-12-17</span>
             </div>
           </div>
 
           <p id="article-summary">
-            Replace this summary with a 1–2 sentence description of what this article covers and when to use it.
+            This guide supports an authorized wireless security lab simulation using Kali Linux to validate that a lab SSID can be detected, a WPA/WPA2 validation artifact (e.g., handshake evidence) can be captured, and an offline dictionary-based password strength audit can be completed using an approved wordlist. Outcomes help confirm wireless testing readiness and highlight risks associated with weak passphrases in a controlled environment.
           </p>
 
           <div class="callouts">
@@ -502,94 +502,46 @@
           <div class="divider"></div>
 
           <h3 id="purpose">Purpose</h3>
-          <p>Explain the problem this article solves and the expected outcome.</p>
+          <p>To provide a repeatable, step-by-step process for conducting a controlled Wi-Fi security assessment in a lab environment using Kali Linux and Wifite. This procedure demonstrates handshake capture and dictionary-based password testing to help teams identify weak credentials, understand wireless attack paths, and improve security hardening—only on networks explicitly owned or authorized for testing.</p>
 
-          <h3 id="scope">Scope</h3>
+          <h3 id="scope">When to use this guide</h3>
           <ul>
-            <li>Applies to: <b>[e.g., Windows 11 / Chrome / Intune-enrolled devices]</b></li>
-            <li>Does not apply to: <b>[e.g., macOS / personal devices]</b></li>
-          </ul>
-
-          <h3 id="prereqs">Prerequisites</h3>
-          <ul>
-            <li>Required access: <b>[role/permissions]</b></li>
-            <li>Required tools: <b>[apps/versions]</b></li>
-            <li>Required info: <b>[user/device name, ticket number, etc.]</b></li>
+            <li>When conducting training for wireless security concepts (handshake capture + offline cracking) in a controlled environment.</b></li>
+            <li>When validating a wireless test network configuration (e.g., confirming WPA2 is enabled and that credentials meet complexity expectations).</b></li>
+            <li>When demonstrating the impact of weak passphrases using approved wordlists for security awareness.</b></li>
+            <li>When reproducing a known lab scenario for documentation, troubleshooting, or repeatability.</b></li>
           </ul>
 
           <details>
             <summary>Security note (recommended)</summary>
             <p>
-              If this article touches security tooling, keep it scoped to approved environments and include
-              a clear statement about authorization and usage boundaries.
+              only on networks explicitly owned or authorized for testing.
             </p>
           </details>
 
           <h3 id="procedure">Procedure</h3>
           <ol>
-            <li>Step 1 — <b>Action</b> (include where to click / what to run).</li>
-            <li>Step 2 — <b>Expected result</b> (what the technician/user should see).</li>
-            <li>Step 3 — <b>Document</b> relevant details in the ticket.</li>
+            <li>Step 1 — <b>Action</b> Prepare the dictionary file for Wifite, do so by locating the dictionary file.</li>
+            <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>locate rockyou</code></pre>
+            <li>Step 2 — <b>Expected result</b> Now decompress the file.</li>
+            <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>sudo gunzip /usr/share/wordlists/rockyou.txt.gz</code></pre>
+            <li>Step 3 — <b>Action</b> Run wifite with the following arguments.</li>
+            <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>sudo wifite --dict /usr/share/wordlists/rockyou.txt</code></pre>
+            <li>Step 4 — <b>Document</b> Once wifite starts scanning for available networks, press <b>CTRL + C</b> to stop the scan, then select the target network number.</li>
+            <li>Step 5 — <b>Document</b> Once the handshake is captured, wifite will automatically start cracking the handshake.</li>
+            <li>Step 6 — <b>Document</b> Once the handshake is cracked, it will automatically show the password on the screen.</li>
           </ol>
-
-          <p><b>Example command block:</b></p>
-          <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code># Put safe example commands here
-# (Avoid including steps that enable wrongdoing or bypass security.)
-echo "Hello, KB!"</code></pre>
-
-          <h3 id="validation">Validation</h3>
-          <ul>
-            <li>Verify: <b>[what “success” looks like]</b></li>
-            <li>Confirm with user: <b>[what they should test]</b></li>
-            <li>Evidence: <b>[screenshots/logs to attach]</b></li>
-          </ul>
-
-          <h3 id="troubleshooting">Troubleshooting</h3>
-          <table aria-label="Troubleshooting table">
-            <thead>
-              <tr>
-                <th>Symptom</th>
-                <th>Likely cause</th>
-                <th>Fix</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Error message: <code>[example]</code></td>
-                <td>[common root cause]</td>
-                <td>[safe fix steps]</td>
-              </tr>
-              <tr>
-                <td>Feature not available</td>
-                <td>Permissions / licensing</td>
-                <td>Confirm group/role, then retry</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h3 id="escalation">Escalation</h3>
-          <ul>
-            <li>Escalate to: <b>[team / queue]</b></li>
-            <li>Include: <b>[logs, screenshots, timestamps, device ID]</b></li>
-            <li>Severity guidance: <b>[impact criteria]</b></li>
-          </ul>
-
-          <h3 id="change-log">Change log</h3>
-          <ul>
-            <li><b>2025-12-17</b> — Initial article created</li>
-            <li><b>[YYYY-MM-DD]</b> — [Change summary]</li>
-          </ul>
 
           <div class="divider"></div>
 
           <p style="color:var(--muted);font-size:12px;">
-            Owner: <b>[Name/Team]</b> • Source of truth: <b>[System/Link]</b> • Review cycle: <b>[e.g., quarterly]</b>
+            Owner: <b>[Antonio Castro]</b>
           </p>
         </div>
       </article>
 
       <footer>
-        Built as a single-file HTML template (no external dependencies).
+        Sudo-Antonio-Castro
       </footer>
     </main>
   </div>
