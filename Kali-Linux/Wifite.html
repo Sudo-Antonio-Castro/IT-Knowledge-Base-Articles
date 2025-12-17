@@ -423,8 +423,8 @@
         <svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4zm0 4.2L6 8.7v3.4c0 3.7 2.7 7.1 6 7.6 3.3-.5 6-3.9 6-7.6V8.7l-6-2.5z"/></svg>
       </div>
       <div>
-        <h1>Knowledge Base</h1>
-        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Professional article template (AIO)</div>
+        <h1>Knowledge Base Article</h1>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Kali Linux</div>
       </div>
     </div>
 
@@ -491,7 +491,7 @@
             </div>
             <div class="callout warn">
               <div class="tag"><span class="dot"></span>Be careful</div>
-              <div>Avoid secrets (passwords/keys) and content that could enable misuse.</div>
+              <div>Use only <b>Approved Networks</b> and only with <b>Explicit written authorization</b> and a defined scope/time window. Do <b>NOT</b> test public networks or anything outside scope, and stop immediately if you see unintended impact.</div>
             </div>
           </div>
         </section>
@@ -515,21 +515,21 @@
           <details>
             <summary>Security note (recommended)</summary>
             <p>
-              only on networks explicitly owned or authorized for testing.
+              <b>Only work on networks explicitly owned or authorized for testing.</b>
             </p>
           </details>
 
           <h3 id="procedure">Procedure</h3>
           <ol>
-            <li>Step 1 — <b>Action</b> Prepare the dictionary file for Wifite, do so by locating the dictionary file.</li>
+            <li>Step 1 — <b>Action</b>: Prepare the dictionary file for Wifite, do so by locating the dictionary file.</li>
             <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>locate rockyou</code></pre>
-            <li>Step 2 — <b>Expected result</b> Now decompress the file.</li>
+            <li>Step 2 — <b>Action</b>: Now decompress the file.</li>
             <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>sudo gunzip /usr/share/wordlists/rockyou.txt.gz</code></pre>
-            <li>Step 3 — <b>Action</b> Run wifite with the following arguments.</li>
+            <li>Step 3 — <b>Action</b>: Run wifite with the following arguments.</li>
             <pre><button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H6a2 2 0 00-2 2v12h2V3h10V1zm3 4H10a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H10V7h9v14z"/></svg><span>Copy</span></button><code>sudo wifite --dict /usr/share/wordlists/rockyou.txt</code></pre>
-            <li>Step 4 — <b>Document</b> Once wifite starts scanning for available networks, press <b>CTRL + C</b> to stop the scan, then select the target network number.</li>
-            <li>Step 5 — <b>Document</b> Once the handshake is captured, wifite will automatically start cracking the handshake.</li>
-            <li>Step 6 — <b>Document</b> Once the handshake is cracked, it will automatically show the password on the screen.</li>
+            <li>Step 4 — <b>Action</b>: Once wifite starts scanning for available networks, press <b>CTRL + C</b> to stop the scan, then select the target network number.</li>
+            <li>Step 5 — <b>Info</b>: Once the handshake is captured, wifite will automatically start cracking the handshake.</li>
+            <li>Step 6 — <b>Info</b>: Once the handshake is cracked, it will automatically show the password on the screen.</li>
           </ol>
 
           <div class="divider"></div>
